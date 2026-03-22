@@ -306,6 +306,15 @@ a {
   gap: 14px;
 }
 
+.bento-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.featured-card {
+  grid-column: span 2;
+  background: linear-gradient(145deg, #1a2d4f, #17263f);
+}
+
 .project-top {
   display: flex;
   justify-content: space-between;
@@ -376,6 +385,17 @@ a {
   color: #d4ffe8;
 }
 
+.summary-grid {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.summary-grid p {
+  margin: 0;
+}
+
 .contact-band {
   width: min(1180px, 92vw);
   margin: 0 auto 30px;
@@ -426,6 +446,18 @@ a {
   .edu-grid,
   .project-grid,
   .resume-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-card {
+    grid-column: auto;
+  }
+
+  .summary-grid {
     grid-template-columns: 1fr;
   }
 

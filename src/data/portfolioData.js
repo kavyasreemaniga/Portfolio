@@ -62,6 +62,8 @@ export const experience = [
 export const projects = [
   {
     title: "Healthcare Analytics Platform",
+    category: "Data Engineering",
+    featured: true,
     description:
       "End-to-end data pipeline processing Hospital Readmissions and Medicare Claims data with medallion architecture, dbt testing, and Airflow orchestration.",
     tech: ["dbt", "Snowflake", "Airflow", "Python", "GitHub Actions", "Streamlit"],
@@ -71,6 +73,36 @@ export const projects = [
       "20+ dbt models with automated quality tests and source freshness checks",
       "CI/CD: SQLFluff linting on PRs, full dbt build on merge to main",
       "Streamlit dashboard for readmission rates and cost analytics",
+    ],
+  },
+  {
+    title: "GCP CDC Pipeline Modernization",
+    category: "Streaming Data",
+    featured: false,
+    description:
+      "Real-time CDC ingestion platform for PostgreSQL and MongoDB using Pub/Sub + Dataflow into BigQuery, designed for low-latency analytics.",
+    tech: ["GCP", "Pub/Sub", "Dataflow", "BigQuery", "Terraform"],
+    github: "",
+    demo: "",
+    highlights: [
+      "Built near real-time ingestion for operational datasets with scalable throughput",
+      "Reduced downstream processing time by 35% through modernized architecture",
+      "Established standardized cloud infrastructure patterns with IaC",
+    ],
+  },
+  {
+    title: "Azure Medallion Finance Pipelines",
+    category: "Analytics Engineering",
+    featured: false,
+    description:
+      "Designed Bronze/Silver/Gold data flows in Azure ecosystem to support regulatory reporting and business analytics use cases.",
+    tech: ["Azure Data Factory", "PySpark", "Databricks", "Power BI", "Microsoft Fabric"],
+    github: "",
+    demo: "",
+    highlights: [
+      "Cut manual processing effort by 50% across 15+ financial pipelines",
+      "Improved trust in reporting with layered transformation and governance",
+      "Delivered stakeholder-facing dashboards for finance and sales teams",
     ],
   },
 ];
@@ -87,5 +119,20 @@ export const education = [
     school: "Manipal Institute of Technology",
     location: "Karnataka, India",
     year: "2018",
+  },
+];
+
+export const certifications = [
+  {
+    name: "dbt Fundamentals",
+    issuer: "dbt Labs",
+  },
+  {
+    name: "Google Cloud Data Engineer (Hands-on Track)",
+    issuer: "Google Cloud Learning Path",
+  },
+  {
+    name: "Azure Data Engineering Practitioner Path",
+    issuer: "Microsoft Learn",
   },
 ];

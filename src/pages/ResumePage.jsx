@@ -1,4 +1,4 @@
-import { education, experience, profile, techStack } from "../data/portfolioData";
+import { certifications, education, experience, profile, techStack } from "../data/portfolioData";
 
 export default function ResumePage() {
   return (
@@ -18,6 +18,24 @@ export default function ResumePage() {
           <p className="muted">
             Building systems with strong lineage, test coverage, and low-latency transformation workflows.
           </p>
+          <div className="summary-grid">
+            <div>
+              <p className="eyebrow">Experience</p>
+              <p className="muted">6+ Years</p>
+            </div>
+            <div>
+              <p className="eyebrow">Industries</p>
+              <p className="muted">Healthcare · Fintech · Tech</p>
+            </div>
+            <div>
+              <p className="eyebrow">Location</p>
+              <p className="muted">{profile.location}</p>
+            </div>
+            <div>
+              <p className="eyebrow">Work Preference</p>
+              <p className="muted">Remote-friendly</p>
+            </div>
+          </div>
         </article>
       </section>
 
@@ -82,6 +100,21 @@ export default function ResumePage() {
               <h3>{item.degree}</h3>
               <p>{item.school}</p>
               <p className="muted">{item.location}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="section-head">
+          <p>Continuous Learning</p>
+          <h2>Certifications</h2>
+        </div>
+        <div className="edu-grid">
+          {certifications.map((item) => (
+            <article key={item.name} className="surface-card">
+              <h3>{item.name}</h3>
+              <p className="muted">{item.issuer}</p>
             </article>
           ))}
         </div>

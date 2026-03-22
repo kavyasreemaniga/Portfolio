@@ -7,21 +7,24 @@ export default function ProjectsPage() {
   const [activeFilter, setActiveFilter] = useState("All Systems");
 
   const filters = useMemo(() => {
-    const allTags = projects.flatMap((project) => project.tech);
-    const unique = [...new Set(allTags)];
-    return ["All Systems", ...unique.slice(0, 8)];
+    const categories = projects.map((project) => project.category);
+    const uniqueCategories = [...new Set(categories)];
+    return ["All Systems", ...uniqueCategories];
   }, []);
 
   const filteredProjects = useMemo(() => {
     return projects.filter((project) => {
       const passesFilter =
-        activeFilter === "All Systems" || project.tech.some((item) => item === activeFilter);
+        activeFilter === "All Systems" || project.category === activeFilter;
 
       const haystack = `${project.title} ${project.description} ${project.tech.join(" ")}`.toLowerCase();
       const passesQuery = haystack.includes(query.toLowerCase());
       return passesFilter && passesQuery;
     });
   }, [activeFilter, query]);
+
+  const featuredProject = filteredProjects.find((project) => project.featured);
+  const secondaryProjects = filteredProjects.filter((project) => !project.featured);
 
   return (
     <main className="page-wrap">
@@ -55,40 +58,88 @@ export default function ProjectsPage() {
           ))}
         </div>
 
-        <div className="project-grid">
-          {filteredProjects.map((project) => (
-            <article key={project.title} className="project-card">
-              <div className="project-top">
-                <h3>{project.title}</h3>
-                <div className="project-links">
-                  {project.github && (
-                    <a href={project.github} target="_blank" rel="noreferrer" aria-label="GitHub repo">
-                      <GithubIcon size={17} />
-                    </a>
-                  )}
-                  {project.demo && (
-                    <a href={project.demo} target="_blank" rel="noreferrer" aria-label="Live demo">
-                      <ExternalLink size={17} />
-                    </a>
-                  )}
+        {filteredProjects.length === 0 && (
+          <article className="project-card">
+            <h3>No matches found</h3>
+            <p>Try a different search phrase or switch back to &quot;All Systems&quot;.</p>
+          </article>
+        )}
+
+        {filteredProjects.length > 0 && (
+          <div className="project-grid bento-grid">
+            {featuredProject && (
+              <article key={featuredProject.title} className="project-card featured-card">
+                <div className="project-top">
+                  <div>
+                    <p className="eyebrow">{featuredProject.category}</p>
+                    <h3>{featuredProject.title}</h3>
+                  </div>
+                  <div className="project-links">
+                    {featuredProject.github && (
+                      <a href={featuredProject.github} target="_blank" rel="noreferrer" aria-label="GitHub repo">
+                        <GithubIcon size={17} />
+                      </a>
+                    )}
+                    {featuredProject.demo && (
+                      <a href={featuredProject.demo} target="_blank" rel="noreferrer" aria-label="Live demo">
+                        <ExternalLink size={17} />
+                      </a>
+                    )}
+                  </div>
                 </div>
-              </div>
-              <p>{project.description}</p>
-              <ul>
-                {project.highlights.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
-              <div className="pill-row">
-                {project.tech.map((tool) => (
-                  <span key={tool} className="pill">
-                    {tool}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
+                <p>{featuredProject.description}</p>
+                <ul>
+                  {featuredProject.highlights.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+                <div className="pill-row">
+                  {featuredProject.tech.map((tool) => (
+                    <span key={tool} className="pill">
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            )}
+
+            {secondaryProjects.map((project) => (
+              <article key={project.title} className="project-card">
+                <div className="project-top">
+                  <div>
+                    <p className="eyebrow">{project.category}</p>
+                    <h3>{project.title}</h3>
+                  </div>
+                  <div className="project-links">
+                    {project.github && (
+                      <a href={project.github} target="_blank" rel="noreferrer" aria-label="GitHub repo">
+                        <GithubIcon size={17} />
+                      </a>
+                    )}
+                    {project.demo && (
+                      <a href={project.demo} target="_blank" rel="noreferrer" aria-label="Live demo">
+                        <ExternalLink size={17} />
+                      </a>
+                    )}
+                  </div>
+                </div>
+                <p>{project.description}</p>
+                <ul>
+                  {project.highlights.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+                <div className="pill-row">
+                  {project.tech.map((tool) => (
+                    <span key={tool} className="pill">
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
       </section>
     </main>
   );
