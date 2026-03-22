@@ -15,12 +15,17 @@ export default function ResumePage() {
             Data engineer specializing in modern cloud platforms, analytics engineering, orchestration, and
             governance-first pipeline design.
           </p>
-          <div className="hero-cta no-print">
+          <div className="hero-cta no-print" style={{ display: "flex", gap: "12px" }}>
+  
+              <a href="/resume.pdf" download="resume.pdf" className="solid-btn" style={{ textDecoration: "none" }}>
+                ↓ Download PDF
+              </a>
+              
             <button type="button" className="solid-btn" onClick={handlePrint}>
-              Download as PDF
-            </button>
+            🖨 Print
+          </button>
           </div>
-        </div>
+          </div>
         <article className="surface-card">
           <p className="eyebrow">Current Focus</p>
           <h3>Platform Reliability + Data Quality</h3>
