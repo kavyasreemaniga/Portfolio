@@ -75,6 +75,14 @@ Most profile updates should only touch:
 
 This keeps pages consistent and avoids duplicate edits.
 
+## Resume Download Behavior
+
+- The top nav now links to the in-app `/resume` page.
+- Use the `Download as PDF` button on `/resume` (browser print-to-PDF).
+- If you want direct file download via link, add a real file at:
+  - `public/resume.pdf`
+  Then switch the nav action back to a direct download link.
+
 ## Security and Privacy Notes
 
 - Direct raw email exposure was removed from active pages.

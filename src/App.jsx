@@ -16,9 +16,9 @@ export default function App() {
           <NavLink to="/projects">Projects</NavLink>
           <NavLink to="/resume">Resume</NavLink>
         </nav>
-        <a className="action-btn" href={profile.resume} download>
-          Download Resume
-        </a>
+        <NavLink className="action-btn" to="/resume">
+          View Resume
+        </NavLink>
       </header>
 
       <Routes>

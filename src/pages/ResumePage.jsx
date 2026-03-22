@@ -1,6 +1,10 @@
 import { certifications, education, experience, profile, techStack } from "../data/portfolioData";
 
 export default function ResumePage() {
+  const handlePrint = () => {
+    window.print();
+  };
+
   return (
     <main className="page-wrap">
       <section className="section resume-hero">
@@ -11,6 +15,11 @@ export default function ResumePage() {
             Data engineer specializing in modern cloud platforms, analytics engineering, orchestration, and
             governance-first pipeline design.
           </p>
+          <div className="hero-cta no-print">
+            <button type="button" className="solid-btn" onClick={handlePrint}>
+              Download as PDF
+            </button>
+          </div>
         </div>
         <article className="surface-card">
           <p className="eyebrow">Current Focus</p>
